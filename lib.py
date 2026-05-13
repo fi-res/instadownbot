@@ -25,7 +25,7 @@ async def reply(message: Message):
         if list(path.glob('*.mp4')):
             print('reply video')
             video = next(path.glob('*.mp4'))
-            await message.reply_video(BufferedInputFile(video.read_bytes(), video.name), caption=caption)
+            await message.reply_video(BufferedInputFile(video.read_bytes(), video.name), caption=caption, supports_streaming=True)
             return
 
         photos = list(path.glob('*.jpg'))
