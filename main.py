@@ -4,12 +4,15 @@ from os import getenv
 from dotenv import load_dotenv
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message
+from aiogram.client.session.aiohttp import AiohttpSession
+from aiohttp import ClientTimeout
 
 from lib import download, reply
 
 load_dotenv()
 
-bot = Bot(getenv('TOKEN', ''))
+session = AiohttpSession(timeout=120)
+bot = Bot(getenv('TOKEN', ''), session=session)
 dp = Dispatcher()
 
 
