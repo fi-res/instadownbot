@@ -22,6 +22,9 @@ async def reply(message: Message):
         if list(path.glob('*.txt')):
             caption = next(path.glob('*.txt')).read_text()
 
+        if caption and len(caption) > 1010:
+            caption = caption[1010:] + '...'
+
         if list(path.glob('*.mp4')):
             print('reply video')
             video = next(path.glob('*.mp4'))
